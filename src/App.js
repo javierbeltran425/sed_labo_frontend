@@ -24,7 +24,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: food }),
+      body: JSON.stringify({name: food}),
     };
 
     try {
