@@ -1,5 +1,5 @@
 import { ReactQueryDevtools } from "react-query/devtools";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";

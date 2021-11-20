@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
@@ -14,8 +13,6 @@ const FoodCard = ({ foodName, id }) => {
   const [displayBasic, setDisplayBasic] = useState(false);
   const [position, setPosition] = useState("center");
   const [food, setFood] = useState("");
-
-  const navigate = useNavigate();
 
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
