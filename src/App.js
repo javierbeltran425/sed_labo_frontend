@@ -27,10 +27,10 @@ function App() {
 
     axios.post('https://localhost:3000/food/register', data)
         .then(res => {
-            console.log(res.data)
+            console.log(res)
         })
         .catch(({ response }) => {
-            console.log(response.data.message)
+            console.log(response)
         })
   }
 
