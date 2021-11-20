@@ -18,14 +18,14 @@ function App() {
 
     
 
-  function registerClick(e) {
+  async function registerClick(e) {
     e.preventDefault()
 
     var data = {
       name: food
     }
 
-    axios.post('https://localhost:3000/food/register', data)
+    await axios.post('https://localhost:3000/food/register', data)
         .then(res => {
             console.log(res)
         })
