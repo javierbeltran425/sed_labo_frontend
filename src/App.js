@@ -14,7 +14,11 @@ import 'primeicons/primeicons.css';
 
 function App() {
   const [food, setFood] = useState('');
-
+  const [aux, setAux] = useState()
+  
+  let foodList
+  
+  
   async function registerClick(e) {
     e.preventDefault()
       
@@ -30,18 +34,33 @@ function App() {
       })
   };
 
+  let content = []
   async function getFood() {
     
-    await axios.get('http://localhost:3000/food/')
+    foodList = await axios.get('http://localhost:3000/food/')
       .then((res) => {
         if(res.status === 200) {
-          console.log(res.data.food)
+          console.log(res)
+          return res.data.food
         }
       })
       .catch((err) => {
         console.log(err)
       })
+      
+      console.log(foodList)
+
+      if(foodList.length > 0){
+        console.log(foodList)
+        for(let i = 0 ; i < foodList.length ; i++){
+          content[i] = (<FoodCard foodName={foodList[i].name} />)
+        }
+      }
+      setAux(content)
+      console.log(aux)
   }
+  
+  let contentAux = aux
 
   return (
     <div className="flex flex-row w-screen h-screen bg-black">
@@ -58,8 +77,8 @@ function App() {
         </div>
 
       </div>
-      <div className="flex flex-col items-center w-1/2 bg-gray-900 ">
-        <FoodCard />
+      <div className="flex flex-col items-center w-1/2 bg-gray-900 overflow-auto">
+        {contentAux}
       </div>
     </div>
   );
