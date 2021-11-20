@@ -39,7 +39,7 @@ function App() {
   };
 
   const getFood = async () => {
-    const url = 'https://localhost:3000/food/register';
+    const url = 'https://localhost:3000/food/';
     try {
       const res = await fetch(url);
       const data = await res.json();
