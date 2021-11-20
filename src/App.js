@@ -16,6 +16,7 @@ function App() {
   const [food, setFood] = useState('');
 
   const registerClick = async () => {
+    console.log(food)
     const url = 'https://localhost:3000/food/register';
     const data = {
       method: "POST",
