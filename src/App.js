@@ -15,18 +15,28 @@ import 'primeicons/primeicons.css';
 function App() {
   const [food, setFood] = useState('');
 
-  function registerClick(e) {
-    e.preventDefault()
-    axios.post('https://localhost:3000/food/register', {name:food})
-      .then((res) => {
-        if(res.status === 201){
-          console.log(res.data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+  const registerClick = async () => {
+    const url = 'https://localhost:3000/food/register';
+    const data = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: food }),
+    };
+
+    try {
+      const res = await fetch(url, data);
+      console.log(res);
+
+      if (res.status === 201) {
+        await fetchPeople();
+        setInputName("");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="flex flex-row w-screen h-screen bg-black">
