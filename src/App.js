@@ -3,6 +3,8 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import './ButtonDemo.css';
 
+import axios from 'axios'
+
 import FoodCard  from './FoodCard';
 
 import 'primereact/resources/themes/lara-light-indigo/theme.css'
@@ -21,7 +23,16 @@ function App() {
             <InputText id="food" value={food} onChange={(e) => setFood(e.target.value)} />
             <label htmlFor="food">Ingrese una comida</label>
           </span>
-          <Button label="Primary" className="p-button-rounded" />
+          <Button label="Registrar" className="p-button-rounded" 
+            onClick={e =>{
+                axios.post('https://localhost:3000/register',
+                  {
+                    name: food
+                  }
+                )
+              }
+            }
+          />
         </div>
 
       </div>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import axios from 'axios'
+
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
@@ -9,22 +11,12 @@ import './DialogDemo.css';
 
 const FoodCard = ({ foodName }) => {
     const [displayBasic, setDisplayBasic] = useState(false);
-    const [displayBasic2, setDisplayBasic2] = useState(false);
-    const [displayModal, setDisplayModal] = useState(false);
-    const [displayMaximizable, setDisplayMaximizable] = useState(false);
-    const [displayPosition, setDisplayPosition] = useState(false);
-    const [displayResponsive, setDisplayResponsive] = useState(false);
     const [position, setPosition] = useState('center');
 
     const [food, setFood] = useState('');
 
     const dialogFuncMap = {
         'displayBasic': setDisplayBasic,
-        'displayBasic2': setDisplayBasic2,
-        'displayModal': setDisplayModal,
-        'displayMaximizable': setDisplayMaximizable,
-        'displayPosition': setDisplayPosition,
-        'displayResponsive': setDisplayResponsive
     }
 
     const onClick = (name, position) => {
@@ -51,7 +43,7 @@ const FoodCard = ({ foodName }) => {
         <div className="flex flex-row justify-between w-4/5 bg-blue-300 m-5 rounded-full hover:scale-105 transform duration-500">
             <div className="flex w-full h-full justify-center items-center text-center">
                 <p>
-                    HOLA MUNDO
+                    {foodName}
                 </p>
             </div>
             <div className="flex flex-rows m-1">
