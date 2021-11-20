@@ -16,22 +16,24 @@ function App() {
   const [food, setFood] = useState('');
   const foodName = useRef(null)
 
-    
-
-  async function registerClick(e) {
-    e.preventDefault()
-
-    var data = {
-      name: food
-    }
-
-    await axios.post('https://localhost:3000/food/register', data)
+  const { mutate, isLoading } = useMutation(register => {
+    axios.post('https://localhost:3000/food/register', data)
         .then(res => {
             console.log(res)
         })
         .catch(err => {
             console.log("Ha ocurrido un error" + err)
         })
+  })
+
+  async function registerClick(e) {
+    e.preventDefault()
+
+    var data = {
+      name: foodName.current.value
+    }
+
+    mutate(data)
   }
 
   return (
@@ -40,7 +42,7 @@ function App() {
         <div className="flex flex-col justiy-center items-center card">
           <h1 className="text-3xl font-bold text-white">Agregar comidas</h1>
           <span className="p-float-label m-6">
-            <InputText id="food" value={food} onChange={(e) => setFood(e.target.value)} />
+            <InputText id="food" ref={foodName} value={food} onChange={(e) => setFood(e.target.value)} />
             <label htmlFor="food">Ingrese una comida</label>
           </span>
           <Button label="Registrar" className="p-button-rounded" 
