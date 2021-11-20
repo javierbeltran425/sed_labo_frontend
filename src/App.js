@@ -14,11 +14,10 @@ import 'primeicons/primeicons.css';
 
 function App() {
   const [food, setFood] = useState('');
-  const foodName = useRef(null)
 
   function registerClick(e) {
     e.preventDefault()
-    axios.post('https://localhost:3000/food/register', {name:foodName.current.value})
+    axios.post('https://localhost:3000/food/register', {name:food})
       .then((res) => {
         if(res.status === 201){
           console.log(res.data)
@@ -35,7 +34,7 @@ function App() {
         <div className="flex flex-col justiy-center items-center card">
           <h1 className="text-3xl font-bold text-white">Agregar comidas</h1>
           <span className="p-float-label m-6">
-            <InputText id="food" ref={foodName} value={food} onChange={(e) => setFood(e.target.value)} />
+            <InputText id="food" value={food} onChange={(e) => setFood(e.target.value)} />
             <label htmlFor="food">Ingrese una comida</label>
           </span>
           <Button label="Registrar" className="p-button-rounded" 
