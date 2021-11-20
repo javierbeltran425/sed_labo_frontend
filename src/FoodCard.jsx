@@ -48,7 +48,9 @@ const FoodCard = ({ foodName }) => {
             </div>
             <div className="flex flex-rows m-1">
                 <Button icon="pi pi-user-edit" className="p-button-rounded p-button-help p-button-outlined" onClick={() => onClick('displayBasic')} />
-                <Button icon="pi pi-times" className="p-button-rounded p-button-danger p-button-outlined"  />
+                <Button icon="pi pi-times" className="p-button-rounded p-button-danger p-button-outlined"  
+                    
+                />
 
                 <Dialog header="Edita esta comida" visible={displayBasic} style={{ width: '50vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
                     <span className="p-float-label m-6">

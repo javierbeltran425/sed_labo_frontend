@@ -3,13 +3,13 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import './ButtonDemo.css';
 
-import axios from 'axios'
+import axios from 'axios';
 
 import FoodCard  from './FoodCard';
 
-import 'primereact/resources/themes/lara-light-indigo/theme.css'
-import 'primereact/resources/primereact.min.css'
-import 'primeicons/primeicons.css'
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 function App() {
   const [food, setFood] = useState('');
