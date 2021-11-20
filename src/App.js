@@ -4,6 +4,8 @@ import { Button } from 'primereact/button';
 import './ButtonDemo.css';
 
 import axios from 'axios';
+import { useMutation } from 'react-query'
+import { useRef, useState } from 'react'
 
 import FoodCard  from './FoodCard';
 
@@ -13,6 +15,27 @@ import 'primeicons/primeicons.css';
 
 function App() {
   const [food, setFood] = useState('');
+  const foodName = useRef(null)
+
+  const [ mutate, isLoading ] = useMutation(register => {
+    axios.post('https://localhost:3000/food/register', register)
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(({ response }) => {
+            console.log(response.data.message)
+        })
+  })
+
+  function registerClick(e) {
+    e.preventDefault()
+
+    var data = {
+      name: food
+    }
+
+    mutate(data)
+  }
 
   return (
     <div className="flex flex-row w-screen h-screen bg-black">
@@ -24,20 +47,7 @@ function App() {
             <label htmlFor="food">Ingrese una comida</label>
           </span>
           <Button label="Registrar" className="p-button-rounded" 
-            onClick={e =>{
-                axios.post('https://localhost:3000/food/register',
-                  {
-                    name: food
-                  }
-                )
-                .then(res => {
-                  console.log(res)
-                })
-                .catch(err => {
-                  console.log(err)
-                })
-              }
-            }
+            onClick={registerClick}
           />
         </div>
 
