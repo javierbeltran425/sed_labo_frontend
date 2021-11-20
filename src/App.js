@@ -26,10 +26,11 @@ function App() {
         })
   })
 
+  var data 
   function registerClick(e) {
     e.preventDefault()
 
-    var data = {
+    data = {
       name: foodName.current.value
     }
 
