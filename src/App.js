@@ -29,8 +29,8 @@ function App() {
         .then(res => {
             console.log(res)
         })
-        .catch(({ response }) => {
-            console.log("Ha ocurrido un error" + response)
+        .catch(err => {
+            console.log("Ha ocurrido un error" + err)
         })
   }
 
