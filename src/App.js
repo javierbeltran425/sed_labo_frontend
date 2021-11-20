@@ -16,25 +16,17 @@ function App() {
   const [food, setFood] = useState('');
   const foodName = useRef(null)
 
-  const { mutate, isLoading } = useMutation(register => {
-    axios.post('https://localhost:3000/food/register', data)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log("Ha ocurrido un error" + err)
-        })
-  })
-
-  var data 
   function registerClick(e) {
     e.preventDefault()
-
-    data = {
-      name: foodName.current.value
-    }
-
-    mutate(data)
+    axios.post('https://localhost:3000/food/register', {name:foodName.current.value})
+      .then((res) => {
+        if(res.status === 201){
+          console.log(res.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
