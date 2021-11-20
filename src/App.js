@@ -30,7 +30,7 @@ function App() {
             console.log(res)
         })
         .catch(({ response }) => {
-            console.log(response)
+            console.log("Ha ocurrido un error" + response)
         })
   }
 
