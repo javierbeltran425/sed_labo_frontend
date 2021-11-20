@@ -31,11 +31,23 @@ function App() {
 
       if (res.status === 201) {
         setFood("");
+        getFood();
       }
     } catch (err) {
       console.error(err);
     }
   };
+
+  const getFood = async () => {
+    const url = 'https://localhost:3000/food/register';
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="flex flex-row w-screen h-screen bg-black">
