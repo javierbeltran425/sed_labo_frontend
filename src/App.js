@@ -20,6 +20,7 @@ function App() {
     const url = 'https://localhost:3000/food/register';
     const data = {
       method: "POST",
+      mode: 'cors',
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,7 +31,7 @@ function App() {
       const res = await fetch(url, data);
       console.log(res);
 
-      if (res.status === 201) {
+      if (res.status === 200) {
         setFood("");
         getFood();
       }
