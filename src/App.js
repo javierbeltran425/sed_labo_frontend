@@ -25,7 +25,7 @@ function App() {
           </span>
           <Button label="Registrar" className="p-button-rounded" 
             onClick={e =>{
-                axios.post('https://localhost:3000/register',
+                axios.post('https://localhost:3000/food/register',
                   {
                     name: food
                   }
