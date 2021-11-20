@@ -16,15 +16,7 @@ function App() {
   const [food, setFood] = useState('');
   const foodName = useRef(null)
 
-  const { isLoading, mutate } = useMutation(register => {
-    axios.post('https://localhost:3000/food/register', register)
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(({ response }) => {
-            console.log(response.data.message)
-        })
-  })
+    
 
   function registerClick(e) {
     e.preventDefault()
@@ -33,7 +25,13 @@ function App() {
       name: food
     }
 
-    mutate(data)
+    axios.post('https://localhost:3000/food/register', data)
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(({ response }) => {
+            console.log(response.data.message)
+        })
   }
 
   return (
