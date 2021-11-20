@@ -30,8 +30,7 @@ function App() {
       console.log(res);
 
       if (res.status === 201) {
-        await fetchPeople();
-        setInputName("");
+        setFood("");
       }
     } catch (err) {
       console.error(err);
