@@ -15,40 +15,32 @@ import 'primeicons/primeicons.css';
 function App() {
   const [food, setFood] = useState('');
 
-  const registerClick = async () => {
-    console.log(food)
-    const url = 'http://localhost:3000/food/register';
-    const data = {
-      method: "POST",
-      mode: 'cors',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({name: food}),
-    };
-
-    try {
-      const res = await fetch(url, data);
-      console.log(res);
-
-      if (res.status === 200) {
-        setFood("");
-        getFood();
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  async function registerClick(e) {
+    e.preventDefault()
+      
+    await axios.post('http://localhost:3000/food/register', { name: food })
+      .then((res) => {
+        if( res.status === 201 ){
+          console.log(res)
+          getFood()
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   };
 
-  const getFood = async () => {
-    const url = 'http://localhost:3000/food/';
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data.data);
-    } catch (error) {
-      console.error(error);
-    }
+  async function getFood() {
+    
+    await axios.get('http://localhost:3000/food/')
+      .then((res) => {
+        if(res.status === 200) {
+          console.log(res.data.food)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
