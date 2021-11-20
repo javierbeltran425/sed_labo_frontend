@@ -30,6 +30,12 @@ function App() {
                     name: food
                   }
                 )
+                .then(res => {
+                  console.log(res)
+                })
+                .catch(err => {
+                  console.log(err)
+                })
               }
             }
           />
