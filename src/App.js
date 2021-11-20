@@ -26,7 +26,7 @@ function App() {
         })
   })
 
-  async function registerClick(e) {
+  function registerClick(e) {
     e.preventDefault()
 
     var data = {
